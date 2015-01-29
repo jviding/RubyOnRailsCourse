@@ -35,7 +35,16 @@ gem 'jquery-rails'
 gem 'turbolinks'
 
 # Lisataan jotta konsoli toimii
-gem 'rb-readline' 
+gem 'rb-readline'
+
+# Lisataan railsin debuggeri
+group :development, :test do
+  gem 'byebug'
+  gem 'web-console', '~> 2.0'
+end
+group :development, :test do
+  gem "better_errors"
+end
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
