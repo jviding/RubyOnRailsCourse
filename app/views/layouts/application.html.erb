@@ -12,9 +12,26 @@
       <%= link_to 'breweries', breweries_path %>
       <%= link_to 'beers', beers_path %>
       <%= link_to 'ratings', ratings_path %>
+      <%= link_to 'users', users_path %>
+      <%= link_to 'beer clubs', beer_clubs_path %>
+      |
+      <% if not session[:user_id].nil? %>
+          <%= link_to current_user.username, user_path(current_user) %>
+          <%= link_to 'rate a beer', new_rating_path %>
+          <%= link_to 'join a club', new_membership_path %>
+          <%= link_to 'signout', root_path + "signout", method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% else %>
+          <%= link_to 'signin', new_session_path %>
+          <%= link_to 'signup', new_user_path %>
+      <% end %>
     </div>
 
-<%= yield %>
+    <%= yield %>
+
+    <% if not session[:user_id].nil? %>
+        <p><%= current_user.username %> signed in</p>
+    <% end %>
+
 
 </body>
 </html>
